@@ -96,12 +96,12 @@ dotnet test
 - `POST /auth/register` - Criar um novo usuário
 
 ## 🎯 Regras de Negócio
-✅ Compras de **4 a 9 unidades** do mesmo produto recebem **10% de desconto**.
-✅ Compras de **10 a 20 unidades** recebem **20% de desconto**.
-✅ **Máximo de 20 unidades** por produto em uma única compra.
-✅ Não há desconto para quantidades **abaixo de 4 unidades**.
-✅ Cancelamento de **toda a venda** ou de **um único item**.
-✅ Eventos simulados para ações da venda (criação, modificação, cancelamento).
+- ✅ Compras de **4 a 9 unidades** do mesmo produto recebem **10% de desconto**.
+- ✅ Compras de **10 a 20 unidades** recebem **20% de desconto**.
+- ✅ **Máximo de 20 unidades** por produto em uma única compra.
+- ✅ Não há desconto para quantidades **abaixo de 4 unidades**.
+- ✅ Cancelamento de **toda a venda** ou de **um único item**.
+- ✅ Eventos simulados para ações da venda (criação, modificação, cancelamento).
 
 ## 📌 Testes e Cobertura
 O projeto contém **testes unitários e de integração** para garantir confiabilidade.
