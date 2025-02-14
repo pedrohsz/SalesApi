@@ -1,0 +1,31 @@
+# version: '3.9'
+
+
+services:
+  webapplication1:
+    image: ${DOCKER_REGISTRY-}webapplication1
+    build:
+      context: .
+      dockerfile: src/WebApplication1/Dockerfile
+    depends_on:
+    - db
+    ports:
+      - "8080:8080" # Mapeia a porta 80 do container para a 8080 do host
+    environment:
+      - ConnectionStrings__SalesApiDb=Host=db;Database=SalesApiDb;Username=postgres;Password=admin
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: SalesApiDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do container para a 5432 do host
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./logs:/app/logs # Mapeia a pasta logs do host para dentro do container
+
+volumes:
+  postgres_data:
+
