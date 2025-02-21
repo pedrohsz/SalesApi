@@ -3,10 +3,11 @@ using Bogus;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
-using WebApplication1.Application.Dtos;
-using WebApplication1.Domain.Entities;
-using WebApplication1.Domain.Services;
-using WebApplication1.Infrastructure.Repositories;
+using SalesApi.Application.Dtos;
+using SalesApi.Domain.Entities;
+using SalesApi.Domain.Interfaces;
+using SalesApi.Domain.Services;
+
 namespace UnitTests.Services
 {
     public class ProductServiceTests

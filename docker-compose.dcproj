@@ -7,7 +7,7 @@
     <ProjectGuid>1b79f35d-3c79-4f78-9228-b8cebe24f801</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>webapplication1</DockerServiceName>
+    <DockerServiceName>salesapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
