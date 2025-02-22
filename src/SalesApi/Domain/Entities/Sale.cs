@@ -10,7 +10,6 @@
         public decimal TotalAmount => Items.Sum(i => i.Total);
         public bool Cancelled { get; private set; }
         public List<SaleItem> Items { get; private set; } = new();
-        public DateTime CreatedAt { get; private set; }
 
         public Sale() { }
 
@@ -20,7 +19,6 @@
             CustomerId = customerId != Guid.Empty ? customerId : throw new ArgumentException("CustomerId cannot be empty.");
             BranchId = branchId != Guid.Empty ? branchId : throw new ArgumentException("BranchId cannot be empty.");
             Date = DateTime.UtcNow;
-            CreatedAt = DateTime.UtcNow;
             Items = items ?? throw new ArgumentNullException(nameof(items));
 
             ValidateItems();

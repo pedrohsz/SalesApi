@@ -16,12 +16,12 @@ namespace SalesApi.Infrastructure.Repositories
 
         public async Task<IEnumerable<Cart>> GetAllAsync()
         {
-            return await _context.Carts.Include(c => c.Items).ToListAsync();
+            return await _context.Carts.Include(c => c.Products).ToListAsync();
         }
 
         public async Task<Cart> GetByIdAsync(Guid id)
         {
-            return await _context.Carts.Include(c => c.Items).FirstOrDefaultAsync(c => c.Id == id);
+            return await _context.Carts.Include(c => c.Products).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task AddAsync(Cart cart)

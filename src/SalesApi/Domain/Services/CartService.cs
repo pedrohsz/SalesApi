@@ -27,10 +27,10 @@ namespace SalesApi.Domain.Services
 
         public async Task<Cart> CreateCartAsync(Cart cart)
         {
-            if (cart == null || !cart.Items.Any())
+            if (cart == null || !cart.Products.Any())
                 throw new ArgumentException("Cart must contain at least one item.");
 
-            foreach (var item in cart.Items)
+            foreach (var item in cart.Products)
             {
                 var product = await _productRepository.GetByIdAsync(item.ProductId);
                 if (product == null)

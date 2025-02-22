@@ -4,7 +4,7 @@
     {
         public Guid ProductId { get; set; }
         public int Quantity { get; set; }
-        public Guid CartId { get; private set; }
+        //public Guid CartId { get; private set; }
 
     }
 }

@@ -10,7 +10,7 @@ namespace SalesApi.Entities.Tests
             var cart = new Cart(Guid.NewGuid(), new List<CartItem> { new CartItem(Guid.NewGuid(), Guid.NewGuid(), 2) });
 
             Assert.NotNull(cart);
-            Assert.NotEmpty(cart.Items);
+            Assert.NotEmpty(cart.Products);
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace SalesApi.Entities.Tests
         {
             var cart = new Cart(Guid.NewGuid(), new List<CartItem>() { new CartItem(Guid.NewGuid(), Guid.NewGuid(), 1) });
 
-            Assert.Single(cart.Items);
+            Assert.Single(cart.Products);
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace SalesApi.Entities.Tests
 
             cart.RemoveItem(productId);
 
-            Assert.Empty(cart.Items);
+            Assert.Empty(cart.Products);
         }
 
         [Fact]

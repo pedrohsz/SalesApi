@@ -16,14 +16,14 @@ namespace SalesApi.Domain.Interfaces
         /// Obtém todas as vendas registradas.
         /// </summary>
         /// <returns>Lista de vendas.</returns>
-        Task<IEnumerable<SaleDto>> GetSalesAsync();
+        Task<IEnumerable<Sale>> GetSalesAsync();
 
         /// <summary>
         /// Obtém uma venda específica pelo ID.
         /// </summary>
         /// <param name="id">ID da venda.</param>
         /// <returns>Dados da venda.</returns>
-        Task<SaleDto> GetSaleByIdAsync(Guid id);
+        Task<Sale> GetSaleByIdAsync(Guid id);
 
         /// <summary>
         /// Cancela uma venda e simula o evento SaleCancelled.

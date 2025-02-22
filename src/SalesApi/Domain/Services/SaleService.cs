@@ -43,7 +43,7 @@ namespace SalesApi.Domain.Services
                 saleItems.Add(saleItem);
             }
 
-            var sale = new Sale(saleDto.SaleNumber, saleDto.CustomerId, saleDto.BranchId, saleItems);
+            var sale = new Entities.Sale(saleDto.SaleNumber, saleDto.CustomerId, saleDto.BranchId, saleItems);
             await _saleRepository.AddAsync(sale);
 
             // Simula o envio do evento SaleCreated
@@ -92,15 +92,15 @@ namespace SalesApi.Domain.Services
             return sale;
         }
 
-        public async Task<IEnumerable<SaleDto>> GetSalesAsync()
+        public async Task<IEnumerable<Sale>> GetSalesAsync()
         {
             _logger.LogInformation("Fetching all sales.");
 
             var sales = await _saleRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<SaleDto>>(sales);
+            return sales;
         }
 
-        public async Task<SaleDto> GetSaleByIdAsync(Guid id)
+        public async Task<Sale> GetSaleByIdAsync(Guid id)
         {
             _logger.LogInformation("Fetching sale {SaleId}", id);
 
@@ -111,7 +111,7 @@ namespace SalesApi.Domain.Services
                 throw new KeyNotFoundException("Venda não encontrada.");
             }
 
-            return _mapper.Map<SaleDto>(sale);
+            return sale;
         }
     }
 }

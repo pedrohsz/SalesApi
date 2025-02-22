@@ -28,7 +28,7 @@ namespace SalesApi.Infrastructure.Repositories
         /// </summary>
         public async Task<(IEnumerable<Product>, int totalItems, int totalPages)> GetPagedAsync(int page, int size, string? orderBy)
         {
-            var query = GetAllQueryable(); // Obtém o IQueryable para modificar
+            var query = GetAllQueryable();
 
             if (!string.IsNullOrEmpty(orderBy))
                 query = ApplySorting(query, orderBy);

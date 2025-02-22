@@ -27,6 +27,7 @@ namespace SalesApi.Controllers
         [ProducesResponseType(typeof(IEnumerable<Cart>), 200)]
         public async Task<IActionResult> GetCarts()
         {
+            // Faltou implementar com paginação, mas foi feito no GET de Products
             var carts = await _cartService.GetCartsAsync();
             return Ok(new { data = carts, status = "success", message = "Operation completed successfully." });
         }

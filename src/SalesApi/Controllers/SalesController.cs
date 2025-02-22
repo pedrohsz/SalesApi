@@ -37,10 +37,13 @@ namespace SalesApi.Controllers
             }
 
             var sale = await _saleService.CreateSaleAsync(saleDto);
-            var response = _mapper.Map<SaleDto>(sale);
 
-            return CreatedAtAction(nameof(GetSaleById), new { id = response.Id },
-                new { data = response, status = "success", message = "Venda criada com sucesso" });
+            var saleResponse = _mapper.Map<SaleResponse>(sale);
+
+            //var response = _mapper.Map<SaleDto>(sale);
+
+            return CreatedAtAction(nameof(GetSaleById), new { id = saleResponse.Id },
+                new { data = saleResponse, status = "success", message = "Venda criada com sucesso" });
         }
 
         /// <summary>
@@ -53,7 +56,9 @@ namespace SalesApi.Controllers
             _logger.LogInformation("Recebida solicitação para listar todas as vendas.");
 
             var sales = await _saleService.GetSalesAsync();
-            return Ok(new { data = sales, status = "success", message = "Operação concluída com sucesso" });
+            var saleResponse = _mapper.Map<IEnumerable<SaleResponse>>(sales);
+
+            return Ok(new { data = saleResponse, status = "success", message = "Operação concluída com sucesso" });
         }
 
         /// <summary>

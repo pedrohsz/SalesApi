@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesApi.Infrastructure.Data;
@@ -11,9 +12,11 @@ using SalesApi.Infrastructure.Data;
 namespace SalesApi.Migrations
 {
     [DbContext(typeof(SalesApiDbContext))]
-    partial class SalesApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250222025135_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,6 +108,9 @@ namespace SalesApi.Migrations
                     b.Property<bool>("Cancelled")
                         .HasColumnType("boolean");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uuid");
 
@@ -162,7 +168,7 @@ namespace SalesApi.Migrations
             modelBuilder.Entity("SalesApi.Domain.Entities.CartItem", b =>
                 {
                     b.HasOne("SalesApi.Domain.Entities.Cart", null)
-                        .WithMany("Products")
+                        .WithMany("Items")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -191,7 +197,7 @@ namespace SalesApi.Migrations
 
             modelBuilder.Entity("SalesApi.Domain.Entities.Cart", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("SalesApi.Domain.Entities.Sale", b =>

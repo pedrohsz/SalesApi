@@ -138,7 +138,7 @@ app.UseSwaggerUI(options =>
     //options.RoutePrefix = "docs";
 });
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.MapControllers();
 

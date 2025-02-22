@@ -12,8 +12,8 @@ using SalesApi.Infrastructure.Data;
 namespace SalesApi.Migrations
 {
     [DbContext(typeof(SalesApiDbContext))]
-    [Migration("20250221092251_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250222070013_migration2")]
+    partial class migration2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,9 +108,6 @@ namespace SalesApi.Migrations
                     b.Property<bool>("Cancelled")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uuid");
 
@@ -168,7 +165,7 @@ namespace SalesApi.Migrations
             modelBuilder.Entity("SalesApi.Domain.Entities.CartItem", b =>
                 {
                     b.HasOne("SalesApi.Domain.Entities.Cart", null)
-                        .WithMany("Items")
+                        .WithMany("Products")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -197,7 +194,7 @@ namespace SalesApi.Migrations
 
             modelBuilder.Entity("SalesApi.Domain.Entities.Cart", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("SalesApi.Domain.Entities.Sale", b =>

@@ -7,6 +7,8 @@
         public Guid ProductId { get; private set; }
         public int Quantity { get; private set; }
 
+        public CartItem() { }
+
         public CartItem(Guid cartId, Guid productId, int quantity)
         {
             CartId = cartId != Guid.Empty ? cartId : throw new ArgumentException("CartId cannot be empty.");

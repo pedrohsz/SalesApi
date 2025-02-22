@@ -172,10 +172,8 @@ namespace UnitTests.Services
                         BranchId = sales[0].BranchId,
                         Items = sales[0].Items.Select(i => new SaleItemDto
                         {
-                            SaleId = i.SaleId,
                             ProductId = i.ProductId,
                             Quantity = i.Quantity,
-                            UnitPrice = i.UnitPrice,
                         }).ToList()
                     }
             };

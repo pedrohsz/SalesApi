@@ -66,7 +66,7 @@ namespace SalesApi.Infrastructure.Data
 
             modelBuilder.Entity<CartItem>()
                 .HasOne<Cart>()
-                .WithMany(c => c.Items)
+                .WithMany(c => c.Products)
                 .HasForeignKey(ci => ci.CartId)
                 .OnDelete(DeleteBehavior.Cascade);
 

@@ -8,8 +8,13 @@ namespace SalesApi.Application.Mappings
     {
         public SaleProfile()
         {
-            CreateMap<Sale, SaleDto>().ReverseMap();
+            CreateMap<Sale, Sale>().ReverseMap();
             CreateMap<SaleItem, SaleItemDto>().ReverseMap();
+
+            CreateMap<Sale, SaleResponse>()
+                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.Items));
+
+            CreateMap<SaleItem, SaleItemResponse>();
         }
     }
 }
